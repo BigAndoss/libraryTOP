@@ -1,0 +1,22 @@
+.table{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 2rem;    
+}
+
+
+
+
+th{
+    padding: 1ch;
+}
+#book{
+    width: 50vw;
+}
+td{
+    width: fit-content;
+    height: 2rem;
+    text-align: center;
+}
+
