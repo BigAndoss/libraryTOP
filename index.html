@@ -14,7 +14,11 @@
         <table border="2px" id="myTable">
             <thead>
                 <th>ID</th>
-                <th colspan="5" id="book">Book</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+                <th id="info">Info</th>
             </thead>
             <tbody id="tbody">
                 <!-- <tr>
@@ -31,14 +35,33 @@
         <button onclick="addBookToLibrary()">Add Book</button>
         <button onclick="check()">Check</button>
         <dialog>
-            <form>
-                <label for=""></label>
-                <button id="add">add</button>
-                <button id="clsBtn">close</button>
-                <p>lo</p>
+            <form method="dialog">
+                <div class="form">
+                    <label for="title">Book Title:</label>
+                    <input type="text" name="title" id="title" >
+                </div>
+                <div class="form">
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author">
+                </div>
+                <div class="form">
+                    <label for="number">Number of pages:</label>
+                    <input type="number" name="pages" id="pages">
+                </div>
+                <div class="form">
+                    <label for="read">Did you read it?</label>
+                    <div class="checkbox">
+                        <input type="checkbox" name="read" id="read"  >
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button id="add">add</button>
+                    <button id="clsBtn">close</button>
+                </div>
             </form>
         </dialog>
         <button id="showBtn">Add a book</button>
+        <button id="showAllBtn" >Show Books</button>
         
 
     </div>

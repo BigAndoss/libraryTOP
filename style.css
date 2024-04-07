@@ -10,13 +10,78 @@
 
 th{
     padding: 1ch;
+    &:not(:first-child){
+        width: 10vw;
+    }
 }
-#book{
-    width: 50vw;
+/* #book{
+    width: 30vw;
 }
+#info{
+    width: 30vw; */
+
 td{
     width: fit-content;
     height: 2rem;
     text-align: center;
 }
+dialog{
+    border: solid gray 2px;
+    border-radius: 20px;
+}
+.form{
+    display: flex;
+    width: 400px;
+    height: 30px;
+    gap: 30px;
 
+    label{
+        width: 30%;
+    }
+    input{
+        height: 20px;
+        width: 45%;
+    }
+    .checkbox{
+        display: flex;
+        flex-direction: column;
+        height: 2rem;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        /* background-color: red; */
+    }
+}
+.buttons{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+button{
+    color: white;
+    background-color: #3b22ab;
+    border: none;
+    width: 6rem;
+    height: 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+}
+table{
+    border: none;
+    th, td{
+        border: none;
+        color: whitesmoke;
+    }
+    td{
+        background-color: #3b22ab;
+    }
+    
+    th{
+        background-color: rgb(0, 179, 255);
+        border-radius: 20px 20px 0 0;
+    }
+    
+}
+td:last-child{
+    width: 30%;
+}

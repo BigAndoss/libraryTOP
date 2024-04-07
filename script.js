@@ -1,73 +1,15 @@
 const myLibrary = [];
+let id = 1;
 
 function Book(title, author, pages, read){
-
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
     this.info = () =>{
-         return `${title} by ${author}, ${pages} pages, ${read}`
+        return `${title} by ${author}, ${pages} pages, ${read}`
     } 
 }
-
-// const book = new Book(1,"a", 200, "not read yet");
-// console.log(book.info());
-
-// console.log(tableBody)
-let id = 1;
-
-
-
-
-// function addBookToLibrary (){
-//     // const book1 = new Book(
-//     //     prompt("Title"),
-//     //     prompt("Author"),
-//     //     prompt("pages"),
-//     //     prompt("Read it yet?")
-//     // )
-
-//     // const boo
-
-//     let row = document.createElement("tr")
-
-//     let bookID = document.createElement("td")
-//     bookID.innerHTML = `${id}`
-//     id++;
-//     let bookTitle = document.createElement("td")
-//     let bookAuthor = document.createElement("td")
-//     let bookPages = document.createElement("td")
-//     let bookRead = document.createElement("td")
-//     let delet = document.createElement("td")
-//     let del = document.createElement("button")
-
-//     del.innerText = 'Delete'
-//     del.addEventListener("click",()=>{
-//         row.remove()
-//         id--
-//     })
-
-
-//     bookTitle.innerHTML = prompt("Title")
-//     bookAuthor.innerHTML = prompt("Author")
-//     bookPages.innerHTML = prompt("pages")
-//     bookRead.innerHTML = prompt("Read it yet?")
-
-//     row.appendChild(bookID)
-//     row.appendChild(bookTitle)
-//     row.appendChild(bookAuthor)
-//     row.appendChild(bookPages)
-//     row.appendChild(bookRead)
-//     delet.appendChild(del)
-//     row.appendChild(delet)
-
-//     document.querySelector("tbody").appendChild(row)
-
-
-//     // myLibrary.push(book1)
-// }
-// addBookToLibrary()
 
 function addBookToLibrary(){
     const book = new Book(
@@ -76,33 +18,42 @@ function addBookToLibrary(){
         pages = prompt("page"),
         read = prompt("Read it yet?"),
     )
-    let row = document.createElement("tr")
-    
-    let bookID = document.createElement("td")
-    bookID.innerHTML = `${id}`
-    id++;
-    let bookTitle = document.createElement("td")
-    let bookAuthor = document.createElement("td")
-    let bookPages = document.createElement("td")
-    let bookRead = document.createElement("td")
-    let info = document.createElement("td")
+    myLibrary.push(book)    
+}
 
-    bookTitle.innerText = book.title
-    bookAuthor.innerText = book.author
-    bookPages.innerText = book.pages
-    bookRead.innerText = book.read
-    info.innerHTML = book.info()
+function showBook(){
+    let table = document.querySelector("tbody")
+    table.innerHTML='';
+    id = 1;
+    myLibrary.forEach(book => {
+        
+        let row = document.createElement("tr")
+        
+        let bookID = document.createElement("td")
+        bookID.innerHTML = `${id}`
+        id++;
+        let bookTitle = document.createElement("td")
+        let bookAuthor = document.createElement("td")
+        let bookPages = document.createElement("td")
+        let bookRead = document.createElement("td")
+        let info = document.createElement("td")
+        
+        bookTitle.innerText = book.title
+        console.log(book.title)
+        bookAuthor.innerText = book.author
+        bookPages.innerText = book.pages
+        bookRead.innerText = book.read
+        info.innerHTML = book.info()
+        
+        row.appendChild(bookID)
+        row.appendChild(bookTitle)
+        row.appendChild(bookAuthor)
+        row.appendChild(bookPages)
+        row.appendChild(bookRead)
 
-    row.appendChild(bookID)
-    row.appendChild(bookTitle)
-    row.appendChild(bookAuthor)
-    row.appendChild(bookPages)
-    row.appendChild(bookRead)
-    row.appendChild(info)
-
-    myLibrary.push(book)
-    document.querySelector("tbody").appendChild(row)
-
+        row.appendChild(info)
+        table.appendChild(row)
+    });
 }
 
 function check() {
@@ -110,20 +61,35 @@ function check() {
     console.log(myLibrary[a].info())
 }
 
-
 const showBtn = document.querySelector("#showBtn")
 const dlg = document.querySelector('dialog');
 const closeBtn = document.querySelector("#clsBtn")
 const btn = document.querySelector("#add")
+const showAll = document.querySelector('#showAllBtn')
 
 showBtn.addEventListener('click',()=>{
     dlg.showModal()
 })
-closeBtn.addEventListener('click',()=>{
-    dlg.preventDefault()
-    dlg.close()
-})
+closeBtn.addEventListener('click',dlg.close())
+// dlg.preventDefault()
+// closeBtn.preventDefault();
 btn.addEventListener('click',()=>{
-    addBookToLibrary();
-    // dlg.preventDefault()
+    addBook()
+    // btn.preventDefault();
+    // addBookToLibrary()
+    // showBook()
 })
+showAll.addEventListener('click',()=>{
+    showBook()
+})
+
+function addBook(){
+    const book = new Book(
+        title = document.querySelector("#title").value,
+        author = document.querySelector("#author").value,
+        pages = document.querySelector("#pages").value,
+        document.querySelector("#read").checked? read = "Yes": read ="No",
+    )
+    myLibrary.push(book)    
+    console.log(book.info())
+}
