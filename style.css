@@ -1,30 +1,59 @@
-.table{
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
-    gap: 2rem;    
+*{
+    font-family:Arial, Helvetica ,sans-serif;
 }
 
+.con{
+    display: flex;
+    gap: 10rem;    
+}
+table{
 
+    border: none;
+    border-radius: 1rem;
+    th{
+        color: whitesmoke;
+        background-color: #1f1b32;
+        padding: 1ch;
+    }
+    .th-short{
+        width: 1rem;
+    }
+    .th{
+        /* width: 10rem; */
+        width: 20ch;
 
-
-th{
-    padding: 1ch;
-    &:not(:first-child){
-        width: 10vw;
+    }
+    td{
+        height: 1.5rem;
+        text-align: center;
+        border: none;
+        padding: 2ch;
+        max-width: 20ch;
+        word-wrap: break-word;
+    }
+    
+    tr:nth-child(odd){
+        background-color: gainsboro;
     }
 }
-/* #book{
-    width: 30vw;
+th:last-child{
+    border-top-right-radius: 10px;
 }
-#info{
-    width: 30vw; */
+th:first-child{
+    border-top-left-radius: 10px;
+}
+tr:last-child td:last-child{
+    border-bottom-right-radius: 10px;
+}
+tr:last-child td:first-child{
+    border-bottom-left-radius: 10px;
+}
+.action{
+    display: flex;
+    gap: 2rem;
+}
 
-td{
-    width: fit-content;
-    height: 2rem;
-    text-align: center;
-}
+
 dialog{
     border: solid gray 2px;
     border-radius: 20px;
@@ -34,54 +63,37 @@ dialog{
     width: 400px;
     height: 30px;
     gap: 30px;
-
+    justify-content: space-between;
     label{
-        width: 30%;
+        width: 50%;
     }
     input{
         height: 20px;
-        width: 45%;
+        min-width: 50%;
     }
-    .checkbox{
-        display: flex;
-        flex-direction: column;
-        height: 2rem;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        /* background-color: red; */
-    }
+}
+button{
+    min-width: fit-content;
 }
 .buttons{
     margin-top: 1rem;
     display: flex;
     justify-content: space-around;
 }
-button{
-    color: white;
-    background-color: #3b22ab;
-    border: none;
-    width: 6rem;
+.btn,.del-btn{
     height: 1.5rem;
     border-radius: 10px;
     font-weight: bold;
-}
-table{
     border: none;
-    th, td{
-        border: none;
-        color: whitesmoke;
-    }
-    td{
-        background-color: #3b22ab;
-    }
-    
-    th{
-        background-color: rgb(0, 179, 255);
-        border-radius: 20px 20px 0 0;
-    }
-    
 }
-td:last-child{
-    width: 30%;
+.del-btn{
+    background-color: darkslategray;
+    color: whitesmoke;
+    padding-inline: 2ch;
+}
+.btn{
+    color: white;
+    background-color: #3b22ab;
+    width: 6rem;
+    
 }

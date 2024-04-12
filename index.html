@@ -9,16 +9,16 @@
 </head>
 <body>
     <h1>Library</h1>
-    <div class="table">
+    <div class="con">
 
-        <table border="2px" id="myTable">
+        <table cellspacing="0"  id="myTable">
             <thead>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Pages</th>
-                <th>Read</th>
-                <th id="info">Info</th>
+                <th class="th-short">ID</th>
+                <th class="th">Title</th>
+                <th class="th">Author</th>
+                <th class="th">Pages</th>
+                <th class="th-short">Read</th>
+                <th class="th-short">Remove</th>
             </thead>
             <tbody id="tbody">
                 <!-- <tr>
@@ -32,38 +32,36 @@
 
             </tbody>
         </table>
-        <button onclick="addBookToLibrary()">Add Book</button>
-        <button onclick="check()">Check</button>
-        <dialog>
-            <form method="dialog">
+        <!-- <button onclick="addBookToLibrary()">Add Book</button> -->
+        <div class="action">
+            <!-- <button onclick="check()"  class="btn">Check</button> -->
+            <dialog>
+            <form method="dialog" spellcheck="false">
                 <div class="form">
                     <label for="title">Book Title:</label>
                     <input type="text" name="title" id="title" >
                 </div>
                 <div class="form">
                     <label for="author">Author:</label>
-                    <input type="text" name="author" id="author">
+                    <input type="text" name="author" id="author" >
                 </div>
                 <div class="form">
                     <label for="number">Number of pages:</label>
-                    <input type="number" name="pages" id="pages">
+                    <input type="number" name="pages" id="pages" >
                 </div>
                 <div class="form">
-                    <label for="read">Did you read it?</label>
-                    <div class="checkbox">
-                        <input type="checkbox" name="read" id="read"  >
-                    </div>
+                    <!-- <label for="read">Did you read it?</label>
+                    <input type="checkbox" name="read" id="read" >                     -->
                 </div>
                 <div class="buttons">
-                    <button id="add">add</button>
-                    <button id="clsBtn">close</button>
+                    <button id="addBook" class="btn">Add</button>
+                    <button id="clsBtn" class="btn">Close</button>
                 </div>
             </form>
         </dialog>
-        <button id="showBtn">Add a book</button>
-        <button id="showAllBtn" >Show Books</button>
+        <button id="add" class="btn">Add a book</button>        
+    </div>
         
-
     </div>
 </body>
 </html>

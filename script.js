@@ -11,16 +11,6 @@ function Book(title, author, pages, read){
     } 
 }
 
-function addBookToLibrary(){
-    const book = new Book(
-        title = prompt("title"),
-        author = prompt("author"),
-        pages = prompt("page"),
-        read = prompt("Read it yet?"),
-    )
-    myLibrary.push(book)    
-}
-
 function showBook(){
     let table = document.querySelector("tbody")
     table.innerHTML='';
@@ -35,61 +25,86 @@ function showBook(){
         let bookTitle = document.createElement("td")
         let bookAuthor = document.createElement("td")
         let bookPages = document.createElement("td")
-        let bookRead = document.createElement("td")
-        let info = document.createElement("td")
-        
+        // let bookRead = document.createElement("td")
+        let deltd = document.createElement("td")
+        let del = document.createElement("button")
+        let txtDel = document.createTextNode("Delete")
+        del.setAttribute("class","del-btn")
         bookTitle.innerText = book.title
-        console.log(book.title)
         bookAuthor.innerText = book.author
         bookPages.innerText = book.pages
-        bookRead.innerText = book.read
-        info.innerHTML = book.info()
+        // bookRead.innerText = book.read
+        // info.innerHTML = book.info()
         
         row.appendChild(bookID)
         row.appendChild(bookTitle)
         row.appendChild(bookAuthor)
         row.appendChild(bookPages)
-        row.appendChild(bookRead)
+        // row.appendChild(bookRead)
 
-        row.appendChild(info)
+        // row.appendChild(info)
+        del.appendChild(txtDel)
+        deltd.appendChild(del)
+        row.appendChild(deltd)
         table.appendChild(row)
     });
 }
 
-function check() {
-    let a = prompt("array");
-    console.log(myLibrary[a].info())
-}
 
-const showBtn = document.querySelector("#showBtn")
-const dlg = document.querySelector('dialog');
-const closeBtn = document.querySelector("#clsBtn")
-const btn = document.querySelector("#add")
-const showAll = document.querySelector('#showAllBtn')
 
-showBtn.addEventListener('click',()=>{
-    dlg.showModal()
-})
-closeBtn.addEventListener('click',dlg.close())
-// dlg.preventDefault()
-// closeBtn.preventDefault();
-btn.addEventListener('click',()=>{
-    addBook()
-    // btn.preventDefault();
-    // addBookToLibrary()
-    // showBook()
-})
-showAll.addEventListener('click',()=>{
-    showBook()
-})
 
 function addBook(){
     const book = new Book(
         title = document.querySelector("#title").value,
         author = document.querySelector("#author").value,
         pages = document.querySelector("#pages").value,
-        document.querySelector("#read").checked? read = "Yes": read ="No",
+        // document.querySelector("#read").checked? read = "Yes": read ="No",
     )
-    myLibrary.push(book)    
-    console.log(book.info())
+    myLibrary.push(book)  
 }
+
+const btn = document.querySelector("#add")
+const dlg = document.querySelector('dialog');
+const closeBtn = document.querySelector("#clsBtn")
+const add = document.querySelector("#addBook")
+
+btn.addEventListener('click',()=>{
+    dlg.showModal()
+    
+})
+closeBtn.addEventListener('click',()=>{
+    dlg.close()
+    clear()
+})
+
+
+let inputField = document.querySelectorAll('input');
+function clear(){
+    inputField.forEach(input =>{
+        input.value=''
+    })
+}
+
+add.addEventListener('click',()=>{
+    
+        // inputField.forEach(input=>{
+        //     if(input.value==='') 
+        //     else{
+        //                 // enableBtn(add)
+        //                 addBook()
+        //                 clear()
+        //                 dlg.close()
+        //                 showBook()
+        //     }
+        // })
+
+    if(inputField[0].value !== ''
+    && inputField[1].value !== ''
+    && inputField[2].value !== ''){
+        addBook()
+        clear()
+        showBook()
+    }else alert('All fields need to be filled')
+    
+})
+
