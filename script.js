@@ -16,7 +16,7 @@ function showBook(){
     table.innerHTML='';
     id = 1;
     myLibrary.forEach(book => {
-        
+        // create table 
         let row = document.createElement("tr")
         
         let bookID = document.createElement("td")
@@ -27,6 +27,7 @@ function showBook(){
         let bookRead = document.createElement("td")
         bookRead.setAttribute("id",`read${id}`)
         
+        // create edits 
         let deltd = document.createElement("td")
         let del = document.createElement("button")
 
@@ -36,7 +37,7 @@ function showBook(){
         checkBox.setAttribute("class","checkbox")
         checkBox.setAttribute("id",`checkbox${id}`)
         checkBox.setAttribute('onclick',`editBook(${id})`)
-        checkBox.checked = book.read === "Yes"? true : false;
+        checkBox.checked = book.read ? true : false ; 
         
         let txtDel = document.createTextNode("Delete")
         del.setAttribute("class","del-btn")
@@ -44,12 +45,13 @@ function showBook(){
         del.setAttribute('onclick',`removeBook(${id})`)
         id++;
         
+        // editing the Object 
         bookTitle.innerText = book.title
         bookAuthor.innerText = book.author
         bookPages.innerText = book.pages
-        bookRead.innerText = book.read
-        // info.innerHTML = book.info()
+        bookRead.innerText = book.read ? 'Yes' : 'No'
         
+        // Adding the new object into the table
         row.appendChild(bookID)
         row.appendChild(bookTitle)
         row.appendChild(bookAuthor)
@@ -59,30 +61,12 @@ function showBook(){
         checkBoxTd.appendChild(checkBox)
         row.appendChild(checkBoxTd)
 
-        // row.appendChild(info)
         del.appendChild(txtDel)
         deltd.appendChild(del)
         row.appendChild(deltd)
         table.appendChild(row)
     });
-    // console.log(id)
-    // console.log(myLibrary)
-}
 
-function removeBook(id){
-    myLibrary.splice((id-1),1)
-    showBook()
-    // console.log(myLibrary)
-}
-function editBook(id){
-    let check = document.querySelector(`#checkbox${id}`).checked
-    let bookread  = document.querySelector(`#read${id}`);
-
-    check !== true ? myLibrary[id-1].read = 'No' : myLibrary[id-1].read = 'Yes';  
-    bookread.innerText = myLibrary[id-1].read
-
-    // check !== true ? bookread.innerText = 'No' : bookread.innerText = 'Yes';  
-    // console.log(bookread.innerText)
 }
 
 function addBook(){
@@ -90,10 +74,24 @@ function addBook(){
         title = document.querySelector("#title").value,
         author = document.querySelector("#author").value,
         pages = document.querySelector("#pages").value,
-        checkBoxInput.checked? read = "Yes": read ="No",
+        read = checkBoxInput.checked,
     )
     myLibrary.push(book)  
 }
+
+function removeBook(id){
+    myLibrary.splice((id-1),1)
+    showBook()
+}
+
+function editBook(id){
+    let check = document.querySelector(`#checkbox${id}`)
+    let bookread  = document.querySelector(`#read${id}`);
+
+    check.checked ? myLibrary[id-1].read = true : myLibrary[id-1].read = false;  
+    bookread.innerText = myLibrary[id-1].read ? 'Yes' : 'No'
+}
+
 
 const btn = document.querySelector("#add")
 const dlg = document.querySelector('dialog');
@@ -102,35 +100,22 @@ const add = document.querySelector("#addBook")
 
 btn.addEventListener('click',()=>{
     dlg.showModal()
-    
 })
 closeBtn.addEventListener('click',()=>{
     dlg.close()
     clear()
 })
 
-
-let inputField = document.querySelectorAll('input');
-let checkBoxInput = document.querySelector('#read');
-function clear(){
+let inputField = document.querySelectorAll('input'); //input inside dialog @addBook()
+let checkBoxInput = document.querySelector('#read'); //checkbox inside dialog @addBook()
+function clear(){ //clear values for the next entry @addBook()
     inputField.forEach(input =>{
         input.value=''
         checkBoxInput.checked = false
     })
 }
 
-add.addEventListener('click',()=>{
-    
-        // inputField.forEach(input=>{
-        //     if(input.value==='') 
-        //     else{
-        //                 // enableBtn(add)
-        //                 addBook()
-        //                 clear()
-        //                 dlg.close()
-        //                 showBook()
-        //     }
-        // })
+add.addEventListener('click',()=>{ //checking for empty values inside dialog @addBook()
 
     if(inputField[0].value !== ''
     && inputField[1].value !== ''
@@ -143,4 +128,3 @@ add.addEventListener('click',()=>{
         alert('All fields need to be filled')
     }
 })
-
