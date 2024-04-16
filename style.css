@@ -15,9 +15,9 @@ table{
         background-color: #1f1b32;
         padding: 1ch;
     }
-    .th-short{
+    /* .th-short{
         width: 1rem;
-    }
+    } */
     .th{
         /* width: 10rem; */
         width: 20ch;
