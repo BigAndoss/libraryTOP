@@ -1,14 +1,16 @@
 let myLibrary = [];
 let id = 1;
 
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = () =>{
-        return `${title} by ${author}, ${pages} pages, ${read}`
-    } 
+class Book {
+    constructor(title,author,pages,read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    info(){
+        return`${this.title} by ${this.author}, ${this.pages}, ${this.read}`
+    }
 }
 
 function showBook(){
@@ -71,10 +73,10 @@ function showBook(){
 
 function addBook(){
     const book = new Book(
-        title = document.querySelector("#title").value,
-        author = document.querySelector("#author").value,
-        pages = document.querySelector("#pages").value,
-        read = checkBoxInput.checked,
+        document.querySelector("#title").value,
+        document.querySelector("#author").value,
+        document.querySelector("#pages").value,
+        checkBoxInput.checked,
     )
     myLibrary.push(book)  
 }
